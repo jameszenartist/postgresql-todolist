@@ -1,13 +1,18 @@
 const path = require("path");
 const express = require("express");
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config({ path: "../.env" });
 const cors = require("cors");
 const pool = require("./db.js");
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
+// if (process.env.NODE_ENV !== "production") {
+//   require("dotenv").config();
+// }
 const port = process.env.PORT || 3000;
+process.env.NODE_ENV = port == 3000 ? "development" : "production";
+console.log(`the port is: ${process.env.PORT}`);
+console.log(`the environment is: ${process.env.NODE_ENV}`);
+
 const ReactPath = path.join(__dirname, "../client/build");
 // middleware
 app.use(express.static(ReactPath));
@@ -51,7 +56,6 @@ app.get("/todos/:id", async (req, res) => {
     const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [
       id,
     ]);
-
     res.json(todo.rows[0]);
   } catch (err) {
     console.error(err.message);

@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import EditTodo from "./EditTodo";
 
@@ -5,7 +6,6 @@ function ListTodos() {
   const [todos, setTodos] = useState([]);
 
   // delete to do func:
-
   const deleteTodo = async (id) => {
     try {
       await fetch(`/todos/${id}`, {
@@ -42,22 +42,31 @@ function ListTodos() {
           </tr>
         </thead>
         <tbody>
-          {todos.map((todo) => (
-            <tr key={todo.todo_id}>
-              <td>{todo.description}</td>
-              <td>
-                <EditTodo todo={todo} />
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteTodo(todo.todo_id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+          <AnimatePresence>
+            {todos.map((todo) => (
+              <motion.tr
+                key={todo.todo_id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                {/* <tr key={todo.todo_id}> */}
+                <td>{todo.description}</td>
+                <td>
+                  <EditTodo todo={todo} />
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteTodo(todo.todo_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+                {/* </tr> */}
+              </motion.tr>
+            ))}
+          </AnimatePresence>
         </tbody>
       </table>
     </div>
