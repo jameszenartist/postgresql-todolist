@@ -23,7 +23,6 @@ app.use(express.json()); // req.body()
 //create a todo
 app.post("/todos", async (req, res) => {
   try {
-    // console.log(req.body);
     // description coming from client side:
     const { description } = req.body;
     const newTodo = await pool.query(
