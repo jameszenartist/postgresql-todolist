@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import InputTodo from "./components/InputTodo.jsx";
 import ListTodos from "./components/ListTodos.jsx";
 import "./App.css";
@@ -5,10 +7,10 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div className="container">
+      <motion.div className="container">
         <InputTodo />
         <ListTodos />
-      </div>
+      </motion.div>
     </>
   );
 }
