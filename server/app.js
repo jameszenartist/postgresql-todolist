@@ -8,16 +8,17 @@ const pool = require("./db.js");
 // if (process.env.NODE_ENV !== "production") {
 //   require("dotenv").config();
 // }
-const port = process.env.PORT || 3000;
-process.env.NODE_ENV = port == 3000 ? "development" : "production";
+const port = process.env.PORT || 8000;
+process.env.NODE_ENV = port == 5000 ? "development" : "production";
 console.log(`the port is: ${process.env.PORT}`);
 console.log(`the environment is: ${process.env.NODE_ENV}`);
-
 const ReactPath = path.join(__dirname, "../client/build");
+
 // middleware
 app.use(express.static(ReactPath));
 app.use(cors());
 app.use(express.json()); // req.body()
+
 // ROUTES
 
 //create a todo
@@ -42,7 +43,7 @@ app.get("/todos", async (req, res) => {
     const allTodos = await pool.query(`SELECT * FROM todo`);
     res.json(allTodos.rows);
   } catch (err) {
-    console.error(err.message);
+    console.error(`${err.message}`);
   }
 });
 

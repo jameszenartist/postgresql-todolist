@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import InputTodo from "./components/InputTodo.jsx";
 import ListTodos from "./components/ListTodos.jsx";
 import "./App.css";

@@ -11,7 +11,6 @@ let config = {
   database: process.env.PORT_DB,
   ssl: process.env.SSL_AUTH,
 };
-
 const pool = new Pool(config);
 
 module.exports = pool;
