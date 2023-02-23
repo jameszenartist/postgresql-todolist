@@ -5,6 +5,7 @@
   --pur-4: #bdaec6;
   --pur-5: #ffffff;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +13,7 @@
   box-sizing: border-box;
   text-decoration: none;
   cursor: url(../public/icons8-edit-30.png), auto;
+  cursor: none;
 }
 
 body {
@@ -80,4 +82,16 @@ td button:hover {
 
 button.btn-close {
   color: var(--pur-5) !important;
+}
+
+.cursor {
+  background-color: rgba(255, 255, 255, 0.3);
+  filter: blur(8px);
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
