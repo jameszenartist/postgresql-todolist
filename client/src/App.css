@@ -13,7 +13,7 @@
   box-sizing: border-box;
   text-decoration: none;
   cursor: url(../public/icons8-edit-30.png), auto;
-  cursor: none;
+  /* cursor: none; */
 }
 
 body {

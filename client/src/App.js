@@ -37,11 +37,11 @@ function App() {
         </b>
       </div> */}
       <div className="container">
-        <motion.div
+        {/* <motion.div
           className="cursor"
           variants={variants}
           animate="default"
-        ></motion.div>
+        ></motion.div> */}
         <InputTodo />
         <ListTodos />
       </div>
